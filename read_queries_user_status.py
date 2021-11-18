@@ -6,4 +6,3 @@ if __name__ == '__main__':
 
     for order in orders:
         print(order)
-        
