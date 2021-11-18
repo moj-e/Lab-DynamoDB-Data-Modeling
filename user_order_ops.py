@@ -23,7 +23,6 @@ def add_address(username, address_label, address):
     table = dynamodb.Table('users-orders-items')
     
     try:
-        # Update item in table for the given username key.
         resp = table.update_item(
             Key={'pk' : '#USER#{0}'.format(username),
                  'sk' : 'PROFILE'
@@ -66,8 +65,6 @@ def add_item(order_id, product_name, quantity, price):
     print("Added {0} to order {1}".format(product_name, order_id))
     
 def checkout(username, address, items): 
-    # Generate order ID. In real life, there are better
-    # ways of doing this
     order_id = hashlib.sha256(str(random.random()).encode()).hexdigest()[:random.randrange(1, 20)]
     
     dynamodb = boto3.resource('dynamodb')
